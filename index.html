@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Multi-Step Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="multi-step-form">
+        <div class="sidebar">
+            <div class="step" onclick="goToStep(1)">
+                <div class="step-number active">1</div>
+                <div class="step-info">
+                    <span>Step 1</span>
+                    <span>Your Info</span>
+                </div>
+            </div>
+            <div class="step" onclick="goToStep(2)">
+                <div class="step-number">2</div>
+                <div class="step-info">
+                    <span>Step 2</span>
+                    <span>Select Plan</span>
+                </div>
+            </div>
+            <div class="step" onclick="goToStep(3)">
+                <div class="step-number">3</div>
+                <div class="step-info">
+                    <span>Step 3</span>
+                    <span>Add-ons</span>
+                </div>
+            </div>
+            <div class="step" onclick="goToStep(4)">
+                <div class="step-number">4</div>
+                <div class="step-info">
+                    <span>Step 4</span>
+                    <span>Summary</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-content">
+            <!-- Step 1 - Personal Info -->
+            <div class="form-step active" id="step1">
+                <h1 class="form-title">Personal info</h1>
+                <p class="form-description">Please provide your name, email address, and phone number.</p>
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="e.g. Stephen King">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="e.g. stephenking@lorem.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="e.g. +1 234 567 890">
+                </div>
+
+                <div class="form-actions">
+                    <div></div>
+                    <button class="btn btn-next" onclick="nextStep()">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 2 - Select Plan -->
+            <div class="form-step" id="step2">
+                <h1 class="form-title">Select your plan</h1>
+                <p class="form-description">You have the option of monthly or yearly billing.</p>
+                
+                <div class="plan-options">
+                    <div class="plan-option" onclick="selectPlan('arcade')">
+                        <div class="plan-icon">
+                            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FFAF7E" cx="20" cy="20" r="20"/><path d="M24.995 18.005h-3.998v5.998h-2v-5.998H15a1 1 0 0 0-1 1V29a1 1 0 0 0 1 1h9.995a1 1 0 0 0 1-1v-9.995a1 1 0 0 0-1-1Zm-5.997 8.996h-2v-1.999h2v2Zm2-11.175a2.999 2.999 0 1 0-2 0v2.18h2v-2.18Z" fill="#FFF" fill-rule="nonzero"/></g></svg>
+                        </div>
+                        <div class="plan-info">
+                            <h3 class="plan-name">Arcade</h3>
+                            <p class="plan-price">$9/mo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="plan-option selected" onclick="selectPlan('advanced')">
+                        <div class="plan-icon">
+                            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#F9818E" cx="20" cy="20" r="20"/><path d="M25.057 15H14.944C12.212 15 10 17.03 10 19.885c0 2.857 2.212 4.936 4.944 4.936h10.113c2.733 0 4.943-2.08 4.943-4.936S27.79 15 25.057 15ZM23.13 20.388c0 .665-.549 1.205-1.227 1.205H14.964c-.678 0-1.227-.54-1.227-1.205 0-.666.549-1.205 1.227-1.205h6.939c.678 0 1.227.54 1.227 1.205Z" fill="#FFF" fill-rule="nonzero"/></g></svg>
+                        </div>
+                        <div class="plan-info">
+                            <h3 class="plan-name">Advanced</h3>
+                            <p class="plan-price">$12/mo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="plan-option" onclick="selectPlan('pro')">
+                        <div class="plan-icon">
+                            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#483EFF" cx="20" cy="20" r="20"/><path d="M26.666 13H13.334A3.333 3.333 0 0 0 10 16.333v7.193a3.447 3.447 0 0 0 2.14 3.24c1.238.5 2.656.182 3.56-.8L18.52 23h2.96l2.82 2.966a3.2 3.2 0 0 0 3.56.8 3.447 3.447 0 0 0 2.14-3.24v-7.193A3.333 3.333 0 0 0 26.666 13Zm-9.333 6H16v1.333a.667.667 0 0 1-1.333 0V19h-1.334a.667.667 0 0 1 0-1.334h1.334v-1.333a.667.667 0 1 1 1.333 0v1.333h1.333a.667.667 0 1 1 0 1.334Zm7.333 2a1.333 1.333 0 1 1 0-2.666 1.333 1.333 0 0 1 0 2.666ZM26 18.333a1.333 1.333 0 1 1-2.667 0 1.333 1.333 0 0 1 2.667 0Z" fill="#FFF" fill-rule="nonzero"/></g></svg>
+                        </div>
+                        <div class="plan-info">
+                            <h3 class="plan-name">Pro</h3>
+                            <p class="plan-price">$15/mo</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="billing-toggle">
+                    <span class="billing-option active">Monthly</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="billing-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="billing-option">Yearly</span>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-back" onclick="prevStep()">Go Back</button>
+                    <button class="btn btn-next" onclick="nextStep()">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 3 - Add-ons -->
+            <div class="form-step" id="step3">
+                <h1 class="form-title">Pick add-ons</h1>
+                <p class="form-description">Add-ons help enhance your gaming experience.</p>
+                
+                <div class="addon-options">
+                    <div class="addon-option selected" onclick="toggleAddon('online-service')">
+                        <div class="addon-left">
+                            <div class="addon-checkbox"></div>
+                            <div class="addon-info">
+                                <h3>Online service</h3>
+                                <p>Access to multiplayer games</p>
+                            </div>
+                        </div>
+                        <div class="addon-price">+$1/mo</div>
+                    </div>
+                    
+                    <div class="addon-option" onclick="toggleAddon('larger-storage')">
+                        <div class="addon-left">
+                            <div class="addon-checkbox"></div>
+                            <div class="addon-info">
+                                <h3>Larger storage</h3>
+                                <p>Extra 1TB of cloud save</p>
+                            </div>
+                        </div>
+                        <div class="addon-price">+$2/mo</div>
+                    </div>
+                    
+                    <div class="addon-option selected" onclick="toggleAddon('custom-profile')">
+                        <div class="addon-left">
+                            <div class="addon-checkbox"></div>
+                            <div class="addon-info">
+                                <h3>Customizable profile</h3>
+                                <p>Custom theme on your profile</p>
+                            </div>
+                        </div>
+                        <div class="addon-price">+$2/mo</div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-back" onclick="prevStep()">Go Back</button>
+                    <button class="btn btn-next" onclick="nextStep()">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 4 - Summary -->
+            <div class="form-step" id="step4">
+                <h1 class="form-title">Finishing up</h1>
+                <p class="form-description">Double-check everything looks OK before confirming.</p>
+                
+                <div class="summary-container">
+                    <div class="plan-summary">
+                        <div class="plan-summary-info">
+                            <h3>Advanced (Monthly)</h3>
+                            <a onclick="goToStep(2)">Change</a>
+                        </div>
+                        <div class="plan-summary-price">$12/mo</div>
+                    </div>
+                    
+                    <div class="addons-summary">
+                        <div class="addon-summary-item">
+                            <span class="addon-summary-name">Online service</span>
+                            <span class="addon-summary-price">+$1/mo</span>
+                        </div>
+                        <div class="addon-summary-item">
+                            <span class="addon-summary-name">Customizable profile</span>
+                            <span class="addon-summary-price">+$2/mo</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="total-summary">
+                    <p>Total (per month)</p>
+                    <div class="total-price">$15/mo</div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-back" onclick="prevStep()">Go Back</button>
+                    <button class="btn btn-confirm" onclick="confirmForm()">Confirm</button>
+                </div>
+            </div>
+
+            <!-- Thank You Step -->
+            <div class="thank-you" id="thank-you">
+                <div class="thank-you-icon">
+                    <svg width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" fill="url(#a)"/><path d="M28 39.92 36.08 48l16-16" stroke="#fff" stroke-width="3"/><defs><linearGradient id="a" x1="-23.014" y1="11.507" x2="0" y2="91.507" gradientUnits="userSpaceOnUse"><stop stop-color="#6348FE"/><stop offset="1" stop-color="#610595"/></linearGradient></defs></svg>
+                </div>
+                <h1>Thank you!</h1>
+                <p>Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
